@@ -61,6 +61,10 @@ contract TestMerkleProof is MerkleProof {
         return hashes[hashes.length - 1];
     }
 
+    function showTree() public view returns (bytes32[] memory) {
+        return hashes ; 
+    }
+
     /* verify
     3rd leaf
     0xdca3326ad7e8121bf9cf9c12333e6b2271abe823ec9edfe42f813b1e768fa57b

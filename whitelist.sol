@@ -17,10 +17,6 @@ contract Whitelist {
       _;
     }
 
-    modifier isWhitelisted(address _address) {
-      require(whitelistedAddresses[_address], "Whitelist: You need to be whitelisted");
-      _;
-    }
 
     function addUser(address _addressToWhitelist) public onlyOwner {
       whitelistedAddresses[_addressToWhitelist] = true;
@@ -31,8 +27,5 @@ contract Whitelist {
       return userIsWhitelisted;
     }
 
-    function exampleFunction() public view isWhitelisted(msg.sender) returns(bool){
-      return (true);
-    }
 
 }

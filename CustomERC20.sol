@@ -21,19 +21,19 @@ contract Sikka{
     }
 
     function transfer(address _to , uint _amount ) public {
-        require(balance[msg.sender] >= _amount , "Insufficient balance");
+        require(balance[msg.sender] >= _amount , "Insufficient balance here");
         balance[msg.sender] -= _amount ; 
         balance[_to] += _amount ; 
         emit Transfer(msg.sender , _to , _amount ); 
     }
 
     function transferFrom(address _from, address _to , uint _amount ) public {
-        require(allowance[_from][_to] >= _amount , "Amount not approved");
+        require(allowance[_from][msg.sender] >= _amount , "Amount not approved");
         require(balance[_from] >= _amount, "Insufficient balance.");
 
         balance[_from] -= _amount ; 
         balance[_to] += _amount ; 
-        allowance[_from][_to] -= _amount ; 
+        allowance[_from][ msg.sender] -= _amount ; 
 
         emit Transfer(_from , _to , _amount);
     }
